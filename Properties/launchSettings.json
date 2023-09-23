@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "testify": {
+      "commandName": "Project"
+    },
+    "Профиль 1": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Users\\admin\\Desktop\\Godot_v4.1.1-stable_mono_win64\\Godot_v4.1.1-stable_mono_win64.exe",
+      "commandLineArgs": "--path.--verbose",
+      "nativeDebugging": true
+    }
+  }
+}
