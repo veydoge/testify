@@ -215,6 +215,7 @@ texture = ExtResource("1_xb5kq")
 6:8/0 = 0
 6:8/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 6:8/0/physics_layer_0/angular_velocity = 0.0
+6:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:8/0 = 0
 7:8/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 7:8/0/physics_layer_0/angular_velocity = 0.0
@@ -399,6 +400,12 @@ texture = ExtResource("2_35sjy")
 0:0/0/physics_layer_0/angular_velocity = 0.0
 
 [resource]
-physics_layer_0/collision_layer = 4
+physics_layer_0/collision_layer = 12
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.886275, 0, 0, 1)
+terrain_set_0/terrain_1/name = "Terrain 1"
+terrain_set_0/terrain_1/color = Color(1, 1, 1, 1)
+terrain_set_1/mode = 0
 sources/6 = SubResource("TileSetAtlasSource_8cqy2")
 sources/9 = SubResource("TileSetAtlasSource_20ux0")

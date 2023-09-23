@@ -6,22 +6,23 @@ public partial class movement : CharacterBody2D
 	public const float Speed = 300.0f;
 	public const float JumpVelocity = -400.0f;
 	AnimatedSprite2D animatedSprite;
+	
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
-    public override void _Ready()
-    {
+	public override void _Ready()
+	{
 		animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
-    }
-    public override void _Process(double delta)
-    {
-        if (Velocity.X == 0)
+	}
+	public override void _Process(double delta)
+	{
+		if (Velocity.X == 0)
 		{
 			animatedSprite.Play("idle");
 		}
-    }
+	}
 
-    public override void _PhysicsProcess(double delta)
+	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
 
@@ -35,7 +36,7 @@ public partial class movement : CharacterBody2D
 
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
-		Vector2 direction = Input.GetVector("leftmove", "ui_right", "ui_up", "ui_down");
+		Vector2 direction = Input.GetVector("leftmove", "rightmove", "upmove", "downmove");
 		if (direction != Vector2.Zero)
 		{
 			velocity.X = direction.X * Speed;
@@ -43,10 +44,13 @@ public partial class movement : CharacterBody2D
 			if (velocity.X < 0)
 			{
 				animatedSprite.Play("going_left");
-			}
+                this.animatedSprite.FlipH = false;
+            }
 			if (velocity.X > 0)
 			{
-				animatedSprite.Play("going_right");
+				animatedSprite.Play("going_left");	
+			this.animatedSprite.FlipH = true;
+			
 			}
 	
 		}
