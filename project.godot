@@ -15,6 +15,10 @@ run/main_scene="res://Node2D.tscn"
 config/features=PackedStringArray("4.1", "C#")
 config/icon="res://icon.png"
 
+[autoload]
+
+Globalscript="*res://globalscript.cs"
+
 [dotnet]
 
 project/assembly_name="testify"
