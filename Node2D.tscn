@@ -1,12 +1,13 @@
-[gd_scene load_steps=28 format=3 uid="uid://c1u0d7wbte2qx"]
+[gd_scene load_steps=29 format=3 uid="uid://c1u0d7wbte2qx"]
 
 [ext_resource type="TileSet" uid="uid://chch7qij7mj4j" path="res://summertileset.tres" id="1_6vgqx"]
+[ext_resource type="Script" path="res://World.gd" id="1_u11ad"]
 [ext_resource type="Script" path="res://movement.cs" id="2_5hjct"]
 [ext_resource type="Texture2D" uid="uid://u7a2qo3yi0sq" path="res://Tiny Wonder Forest 1.0/characters/main character/walk and idle.png" id="3_ladpn"]
+[ext_resource type="Resource" uid="uid://81gov05ovedi" path="res://assets/inventory/inventory.tres" id="4_cm0ak"]
 [ext_resource type="Script" path="res://CanvasLayer.gd" id="4_i3sa2"]
 [ext_resource type="PackedScene" uid="uid://dodke3emyt7xy" path="res://inventory_gui.tscn" id="4_wpsuf"]
 [ext_resource type="PackedScene" uid="uid://b1ifmfx2liswj" path="res://item_slot.tscn" id="5_o4eug"]
-[ext_resource type="Script" path="res://inventory_gui.gd" id="5_yvbh6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_onlx0"]
 atlas = ExtResource("3_ladpn")
@@ -155,7 +156,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g7ph1"]
 size = Vector2(12.1804, 4.66467)
 
-[node name="Node2D" type="Node2D"]
+[node name="World" type="Node2D"]
+script = ExtResource("1_u11ad")
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
@@ -176,6 +178,7 @@ layer_1/tile_data = PackedInt32Array(2097194, 9, 0, 2097198, 9, 0)
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(662, 442)
 script = ExtResource("2_5hjct")
+inventory = ExtResource("4_cm0ak")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 sprite_frames = SubResource("SpriteFrames_2gwuj")
@@ -191,6 +194,7 @@ position = Vector2(7.84148, 1.78738)
 shape = SubResource("RectangleShape2D_g7ph1")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
 script = ExtResource("4_i3sa2")
 
 [node name="InventoryGUI" parent="CanvasLayer" instance=ExtResource("4_wpsuf")]
@@ -198,7 +202,6 @@ offset_left = -92.0
 offset_top = -56.0
 offset_right = 92.0
 offset_bottom = 56.0
-script = ExtResource("5_yvbh6")
 
 [node name="GridContainer" type="GridContainer" parent="CanvasLayer/InventoryGUI"]
 layout_mode = 0
@@ -252,3 +255,6 @@ layout_mode = 2
 
 [node name="ItemSlot15" parent="CanvasLayer/InventoryGUI/GridContainer" instance=ExtResource("5_o4eug")]
 layout_mode = 2
+
+[connection signal="closed" from="CanvasLayer/InventoryGUI" to="." method="_on_inventory_gui_closed"]
+[connection signal="opened" from="CanvasLayer/InventoryGUI" to="." method="_on_inventory_gui_opened"]

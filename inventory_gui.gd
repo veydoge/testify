@@ -1,5 +1,10 @@
 extends Control
 
+signal opened
+signal closed
+
+@onready var Inventory = preload("res://assets/inventory/inventory.tres")
+
 var IsOpen = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,7 +18,10 @@ func _process(delta):
 func open():
 	visible = true
 	IsOpen = true
+	opened.emit()
 	
 func close():
 	visible = false
 	IsOpen = false
+	closed.emit()
+	
