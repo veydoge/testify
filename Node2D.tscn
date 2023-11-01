@@ -1,160 +1,17 @@
-[gd_scene load_steps=29 format=3 uid="uid://c1u0d7wbte2qx"]
+[gd_scene load_steps=11 format=3 uid="uid://c1u0d7wbte2qx"]
 
 [ext_resource type="TileSet" uid="uid://chch7qij7mj4j" path="res://summertileset.tres" id="1_6vgqx"]
 [ext_resource type="Script" path="res://World.gd" id="1_u11ad"]
-[ext_resource type="Script" path="res://movement.cs" id="2_5hjct"]
-[ext_resource type="Texture2D" uid="uid://u7a2qo3yi0sq" path="res://Tiny Wonder Forest 1.0/characters/main character/walk and idle.png" id="3_ladpn"]
-[ext_resource type="Resource" uid="uid://81gov05ovedi" path="res://assets/inventory/inventory.tres" id="4_cm0ak"]
+[ext_resource type="PackedScene" uid="uid://mrd02wmp5bsa" path="res://player.tscn" id="3_wu8vn"]
 [ext_resource type="Script" path="res://CanvasLayer.gd" id="4_i3sa2"]
+[ext_resource type="Script" path="res://player.gd" id="4_rioh4"]
 [ext_resource type="PackedScene" uid="uid://dodke3emyt7xy" path="res://inventory_gui.tscn" id="4_wpsuf"]
 [ext_resource type="PackedScene" uid="uid://b1ifmfx2liswj" path="res://item_slot.tscn" id="5_o4eug"]
+[ext_resource type="Texture2D" uid="uid://b7d0nrqokqa18" path="res://assets/inventory/icons/tile233.png" id="9_sff48"]
+[ext_resource type="Script" path="res://Tomato.gd" id="10_qpwjo"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_onlx0"]
-atlas = ExtResource("3_ladpn")
-region = Rect2(0, 24, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_00hsq"]
-atlas = ExtResource("3_ladpn")
-region = Rect2(24, 24, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uv3po"]
-atlas = ExtResource("3_ladpn")
-region = Rect2(48, 24, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iu8ll"]
-atlas = ExtResource("3_ladpn")
-region = Rect2(72, 24, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_njeko"]
-atlas = ExtResource("3_ladpn")
-region = Rect2(96, 24, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rx5co"]
-atlas = ExtResource("3_ladpn")
-region = Rect2(120, 24, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xm6e1"]
-atlas = ExtResource("3_ladpn")
-region = Rect2(144, 24, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_skg1t"]
-atlas = ExtResource("3_ladpn")
-region = Rect2(168, 24, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o8rba"]
-atlas = ExtResource("3_ladpn")
-region = Rect2(0, 48, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5jw16"]
-atlas = ExtResource("3_ladpn")
-region = Rect2(24, 48, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_swalo"]
-atlas = ExtResource("3_ladpn")
-region = Rect2(48, 48, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3lagl"]
-atlas = ExtResource("3_ladpn")
-region = Rect2(72, 48, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_km7tb"]
-atlas = ExtResource("3_ladpn")
-region = Rect2(96, 48, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j6cwx"]
-atlas = ExtResource("3_ladpn")
-region = Rect2(120, 48, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0lqxw"]
-atlas = ExtResource("3_ladpn")
-region = Rect2(144, 48, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qduuw"]
-atlas = ExtResource("3_ladpn")
-region = Rect2(168, 48, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_egoeh"]
-atlas = ExtResource("3_ladpn")
-region = Rect2(0, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4efqd"]
-atlas = ExtResource("3_ladpn")
-region = Rect2(24, 0, 24, 24)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_2gwuj"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_onlx0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_00hsq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uv3po")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_iu8ll")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_njeko")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rx5co")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xm6e1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_skg1t")
-}],
-"loop": true,
-"name": &"going_left",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o8rba")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5jw16")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_swalo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3lagl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_km7tb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j6cwx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0lqxw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qduuw")
-}],
-"loop": true,
-"name": &"going_right",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_egoeh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4efqd")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g7ph1"]
-size = Vector2(12.1804, 4.66467)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0x0ue"]
+size = Vector2(25.1428, 25.9048)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_u11ad")
@@ -175,29 +32,15 @@ layer_1/y_sort_origin = 0
 layer_1/z_index = 1
 layer_1/tile_data = PackedInt32Array(2097194, 9, 0, 2097198, 9, 0)
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(662, 442)
-script = ExtResource("2_5hjct")
-inventory = ExtResource("4_cm0ak")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
-sprite_frames = SubResource("SpriteFrames_2gwuj")
-animation = &"going_right"
-
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-position = Vector2(0, 1)
-rotation = 3.14159
-scale = Vector2(1.04704, 0.636042)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(7.84148, 1.78738)
-shape = SubResource("RectangleShape2D_g7ph1")
+[node name="Player" parent="." instance=ExtResource("3_wu8vn")]
+script = ExtResource("4_rioh4")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3
 script = ExtResource("4_i3sa2")
 
 [node name="InventoryGUI" parent="CanvasLayer" instance=ExtResource("4_wpsuf")]
+visible = false
 offset_left = -92.0
 offset_top = -56.0
 offset_right = 92.0
@@ -256,5 +99,18 @@ layout_mode = 2
 [node name="ItemSlot15" parent="CanvasLayer/InventoryGUI/GridContainer" instance=ExtResource("5_o4eug")]
 layout_mode = 2
 
+[node name="Tomato" type="Sprite2D" parent="."]
+position = Vector2(605, 420)
+scale = Vector2(0.65625, 0.65625)
+texture = ExtResource("9_sff48")
+script = ExtResource("10_qpwjo")
+
+[node name="Area2D" type="Area2D" parent="Tomato"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tomato/Area2D"]
+position = Vector2(6.10352e-05, 0)
+shape = SubResource("RectangleShape2D_0x0ue")
+
 [connection signal="closed" from="CanvasLayer/InventoryGUI" to="." method="_on_inventory_gui_closed"]
 [connection signal="opened" from="CanvasLayer/InventoryGUI" to="." method="_on_inventory_gui_opened"]
+[connection signal="body_entered" from="Tomato/Area2D" to="Tomato" method="_on_area_2d_body_entered"]

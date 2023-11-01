@@ -1,5 +1,5 @@
-extends Node2D
 
+extends Sprite2D
 
 
 # Called when the node enters the scene tree for the first time.
@@ -12,11 +12,7 @@ func _process(delta):
 	pass
 
 
-func _on_inventory_gui_closed():
-	get_tree().paused = false
-
-
-func _on_inventory_gui_opened():
-	get_tree().paused = true
-
-
+func _on_area_2d_body_entered(body):
+	print("Кто то топчет томат")
+	queue_free()
+	pass # Replace with function body.
