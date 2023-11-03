@@ -1,6 +1,7 @@
 extends CharacterBody2D
 const speed = 300
 @onready var animatedSprite : AnimatedSprite2D = $AnimatedSprite2D
+@onready var inventory = preload("res://assets/inventory/inventory.tres") 
 
 
 
@@ -35,4 +36,4 @@ func _physics_process(delta):
 
 func _on_area_2d_area_entered(area: Area2D):
 	if (area.has_method("collect")):
-		area.collect()
+		area.collect(inventory)

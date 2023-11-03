@@ -7,25 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dodke3emyt7xy" path="res://inventory_gui.tscn" id="4_wpsuf"]
 [ext_resource type="PackedScene" uid="uid://b1ifmfx2liswj" path="res://item_slot.tscn" id="5_o4eug"]
 [ext_resource type="Script" path="res://tomatoitem.gd" id="8_8yqhg"]
+[ext_resource type="Resource" uid="uid://cquurnew6pm0n" path="res://assets/inventory/tomato.tres" id="8_k0g4d"]
 [ext_resource type="Texture2D" uid="uid://b7d0nrqokqa18" path="res://assets/inventory/icons/tile233.png" id="9_sff48"]
-
-[sub_resource type="GDScript" id="GDScript_4upaa"]
-script/source = "extends Area2D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-	
-func collect():
-	get_parent().queue_free()
-	print(\"Блять, меня кто-то растоптал!\")
-"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0x0ue"]
 size = Vector2(25.1428, 25.9048)
@@ -56,7 +39,6 @@ process_mode = 3
 script = ExtResource("4_i3sa2")
 
 [node name="InventoryGUI" parent="CanvasLayer" instance=ExtResource("4_wpsuf")]
-visible = false
 offset_left = -92.0
 offset_top = -56.0
 offset_right = 92.0
@@ -115,19 +97,19 @@ layout_mode = 2
 [node name="ItemSlot15" parent="CanvasLayer/InventoryGUI/GridContainer" instance=ExtResource("5_o4eug")]
 layout_mode = 2
 
-[node name="Tomato" type="Sprite2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
 position = Vector2(605, 420)
 scale = Vector2(0.65625, 0.65625)
-texture = ExtResource("9_sff48")
 script = ExtResource("8_8yqhg")
+itemRes = ExtResource("8_k0g4d")
 
-[node name="Area2D" type="Area2D" parent="Tomato"]
-script = SubResource("GDScript_4upaa")
+[node name="Tomato" type="Sprite2D" parent="Area2D"]
+texture = ExtResource("9_sff48")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Tomato/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(6.10352e-05, 0)
 shape = SubResource("RectangleShape2D_0x0ue")
 
 [connection signal="closed" from="CanvasLayer/InventoryGUI" to="." method="_on_inventory_gui_closed"]
 [connection signal="opened" from="CanvasLayer/InventoryGUI" to="." method="_on_inventory_gui_opened"]
-[connection signal="body_entered" from="Tomato/Area2D" to="Tomato" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area2D" to="Area2D/Tomato" method="_on_area_2d_body_entered"]

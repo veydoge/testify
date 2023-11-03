@@ -2,8 +2,8 @@
 
 [ext_resource type="Resource" uid="uid://c0vindenac7es" path="res://assets/inventory/axe.tres" id="1_u0wwp"]
 [ext_resource type="Resource" uid="uid://drs0ylrmeoess" path="res://assets/inventory/potion.tres" id="2_q8upr"]
-[ext_resource type="Script" path="res://inventory.gd" id="2_wensi"]
+[ext_resource type="Script" path="res://assets/inventory/inventory.gd" id="3_qqr6t"]
 
 [resource]
-script = ExtResource("2_wensi")
-items = Array[Resource("res://InventoryItem.gd")]([ExtResource("1_u0wwp"), ExtResource("2_q8upr"), ExtResource("2_q8upr"), null, ExtResource("2_q8upr")])
+script = ExtResource("3_qqr6t")
+items = Array[Resource("res://InventoryItem.gd")]([ExtResource("2_q8upr"), null, ExtResource("1_u0wwp"), null, null])
