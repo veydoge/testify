@@ -1,7 +1,12 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://chch7qij7mj4j"]
+[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://chch7qij7mj4j"]
 
+[ext_resource type="PackedScene" uid="uid://diui1glh7duqx" path="res://tomato.tscn" id="1_hj21b"]
 [ext_resource type="Texture2D" uid="uid://c0dyfo2pcw20h" path="res://Tiny Wonder Forest 1.0/tilemaps/summer tilemap.png" id="1_xb5kq"]
 [ext_resource type="Texture2D" uid="uid://bau2wq7kkknxk" path="res://ezgif-2-2fb7504e2b.png" id="2_35sjy"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_etxes"]
+resource_name = "Collectables"
+scenes/1/scene = ExtResource("1_hj21b")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8cqy2"]
 texture = ExtResource("1_xb5kq")
@@ -409,3 +414,4 @@ terrain_set_0/terrain_1/color = Color(1, 1, 1, 1)
 terrain_set_1/mode = 0
 sources/6 = SubResource("TileSetAtlasSource_8cqy2")
 sources/9 = SubResource("TileSetAtlasSource_20ux0")
+sources/1 = SubResource("TileSetScenesCollectionSource_etxes")

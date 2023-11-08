@@ -2,15 +2,18 @@ extends Panel
 
 @onready var backgroundSprite: Sprite2D = $background
 @onready var itemsprite: TextureRect = $CenterContainer/Panel/item2d
+@onready var amountlabel: Label = $CenterContainer/Panel/Label
 
-func update(item: InventoryItem):
-	if !item:
-
+func update(slot: InventorySlot):
+	if !slot.item:
 		itemsprite.visible = false
+		amountlabel.visible = false
 	else:
+		amountlabel.text = str(slot.amount)
+		amountlabel.visible = true
 
 		itemsprite.visible = true
-		itemsprite.texture = item.texture
+		itemsprite.texture = slot.item.texture
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

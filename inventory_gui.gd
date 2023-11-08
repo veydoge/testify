@@ -8,8 +8,8 @@ signal closed
 var IsOpen = false
 # Called when the node enters the scene treze for the first time.
 func update():
-	for i in range(min(inventory.items.size(), slots.size())):
-		slots[i].update(inventory.items[i])
+	for i in range(min(inventory.slots.size(), slots.size())):
+		slots[i].update(inventory.slots[i])
 		
 func _ready():
 	inventory.updated.connect(update)	
