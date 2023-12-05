@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://flj18pfj0ixl"]
+
+[ext_resource type="TileSet" uid="uid://chch7qij7mj4j" path="res://summertileset.tres" id="1_wju5p"]
+[ext_resource type="Script" path="res://TileMap.gd" id="2_8vaec"]
+
+[node name="GeneratedTiles" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("1_wju5p")
+format = 2
+script = ExtResource("2_8vaec")
