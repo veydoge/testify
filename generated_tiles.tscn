@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://flj18pfj0ixl"]
+[gd_scene load_steps=4 format=3 uid="uid://flj18pfj0ixl"]
 
 [ext_resource type="TileSet" uid="uid://chch7qij7mj4j" path="res://summertileset.tres" id="1_wju5p"]
 [ext_resource type="Script" path="res://TileMap.gd" id="2_8vaec"]
+[ext_resource type="PackedScene" uid="uid://mrd02wmp5bsa" path="res://player.tscn" id="3_xjxw2"]
 
 [node name="GeneratedTiles" type="Node2D"]
 
@@ -9,3 +10,8 @@
 tile_set = ExtResource("1_wju5p")
 format = 2
 script = ExtResource("2_8vaec")
+
+[node name="Player" parent="." instance=ExtResource("3_xjxw2")]
+position = Vector2(191, 103)
+collision_layer = 0
+collision_mask = 0
