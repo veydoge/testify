@@ -15,3 +15,8 @@ script = ExtResource("2_8vaec")
 position = Vector2(191, 103)
 collision_layer = 0
 collision_mask = 0
+
+[node name="Camera2D" parent="Player" index="1"]
+zoom = Vector2(0.32, 0.32)
+
+[editable path="Player"]
