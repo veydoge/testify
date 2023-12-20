@@ -7,12 +7,14 @@ var RoomArray = []
 var RoomGraph = []
 
 # Called when the node enters the scene tree for the first time.
+
 func _ready():
 	get_screen_transform()
 	projectResolution= get_viewport().get_visible_rect().size
 	# projectTilesRes = Vector2(ceilf(projectResolution.x / 16), ceilf(projectResolution.y / 16))
-	projectTilesRes = Vector2(60, 60)
+	projectTilesRes = Vector2(40, 40)
 	
+
 	GraphPoints = AStar2D.new()
 	
 	
@@ -23,10 +25,6 @@ func _ready():
 	
 	for i in range(8):
 		make_an_island(randi_range(0, projectTilesRes.x - 14), randi_range(0, projectTilesRes.y - 14))
-	var graph_drawer = Graph_drawer.new(GraphPoints)
-	$"..".add_child(Graph_drawer)
-
-			
 
 	pass # Replace with function body.
 	
@@ -54,9 +52,17 @@ func make_an_island(x, y):
 func room_intersect(room1: Room, room2: Room):
 	var intersected = false
 	for corner in room1.corners:
-		if (corner.x >= room2.position.x - 2 and corner.x <= room2.position.x + room2.width + 2) and (corner.y >= room2.position.y - 2 and corner.y <= room2.position.y + room2.height + 2):
+		# проверяет является ли первый остров, вложенным во второй
+		if (corner.x >= room2.position.x and corner.x <= room2.position.x + room2.width) and (corner.y >= room2.position.y and corner.y <= room2.position.y + room2.height):
 			intersected = true
 			return intersected
+	for corner in room2.corners:
+		# проверяет является ли второй остров, вложенным в первый
+		if (corner.x >= room1.position.x and corner.x <= room1.position.x + room1.width) and (corner.y >= room1.position.y and corner.y <= room1.position.y + room1.height):
+			intersected = true
+			return intersected
+
+
 	return intersected
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
