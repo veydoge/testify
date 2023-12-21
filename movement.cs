@@ -44,8 +44,8 @@ public partial class movement : CharacterBody2D
 			if (velocity.X < 0)
 			{
 				animatedSprite.Play("going_left");
-                this.animatedSprite.FlipH = false;
-            }
+				this.animatedSprite.FlipH = false;
+			}
 			if (velocity.X > 0)
 			{
 				animatedSprite.Play("going_left");	
