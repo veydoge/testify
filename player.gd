@@ -23,11 +23,19 @@ func _physics_process(_delta):
 		velocity.x = Direction.x * speed	
 		velocity.y = Direction.y * speed
 		if (velocity.x < 0):
-			animatedSprite.play("idle")
-			animatedSprite.flip_h = false
-		if (velocity.x > 0):
-			animatedSprite.play("idle")
+			animatedSprite.play("going")
+			$sword.rotation_degrees = 180
 			animatedSprite.flip_h = true
+		if (velocity.x > 0):
+			animatedSprite.play("going")
+			$sword.rotation_degrees = 0
+			animatedSprite.flip_h = false
+		if (velocity.y < 0):
+			animatedSprite.play("up")
+			animatedSprite.flip_h = false
+		if (velocity.y > 0):
+			animatedSprite.play("down")
+			animatedSprite.flip_h = false
 	else:
 		velocity.x= move_toward(velocity.x, 0, speed)
 		velocity.y= move_toward(velocity.y, 0, speed)
@@ -86,23 +94,19 @@ func _on_attack_cooldown_timeout():
 	
 func attack():
 	var air = current_dir
-	
 	if Input.is_action_just_pressed("attack"):
 		World.player_current_attack = true
 		attack_ip = true
+		$sword/AnimationPlayer.play("sword")
 		if air == "right":
 			$AnimatedSprite2D.flip_h = false
-			$AnimatedSprite2D.play("idle")
 			$deal_attack_timer.start()
 		if air == "left":
 			$AnimatedSprite2D.flip_h = true
-			$AnimatedSprite2D.play("idle")
 			$deal_attack_timer.start()
 		if air == "down":
-			$AnimatedSprite2D.play("idle")
 			$deal_attack_timer.start()
 		if air == "up":
-			$AnimatedSprite2D.play("idle")
 			$deal_attack_timer.start()
 
 func _on_deal_attack_timer_timeout():
