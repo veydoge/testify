@@ -12,8 +12,7 @@ func _init(position, height, width):
 	self.position = position
 	self.height = height
 	self.width = width
-	center = Vector2i(position.x * 16, position.y * 16)
-	
+	center = Vector2i(position.x * 16 + width * 8, position.y * 16 + height * 8)
 	corners = []
 	corners.append(position)
 	corners.append(Vector2i(position.x + width, position.y))

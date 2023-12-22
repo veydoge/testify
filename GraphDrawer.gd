@@ -3,7 +3,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _draw():
-	
+
 	var GraphPoints = $"../TileMap".GraphPoints
 	if GraphPoints != null:
 		var pointIds = GraphPoints.get_point_ids()

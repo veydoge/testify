@@ -14,8 +14,11 @@ func _ready():
 	# projectTilesRes = Vector2(ceilf(projectResolution.x / 16), ceilf(projectResolution.y / 16))
 	projectTilesRes = Vector2(40, 40)
 	
-
+	
 	GraphPoints = AStar2D.new()
+	var Room1 = Room.new(Vector2i(14, 6), 13, 9)
+	var Room2 = Room.new(Vector2i(24, 10), 9, 11)
+	var check = room_intersect(Room1, Room2)
 	
 	
 	for i in range(projectTilesRes.x):
@@ -25,7 +28,8 @@ func _ready():
 	
 	for i in range(8):
 		make_an_island(randi_range(0, projectTilesRes.x - 14), randi_range(0, projectTilesRes.y - 14))
-
+	
+	connect_rooms()
 	pass # Replace with function body.
 	
 func make_an_island(x, y):
@@ -38,14 +42,16 @@ func make_an_island(x, y):
 	RoomArray.append(newRoom)
 	var id = GraphPoints.get_available_point_id()
 	var nearPoint = GraphPoints.get_closest_point(newRoom.center)
-	GraphPoints.add_point(GraphPoints.get_available_point_id(), newRoom.center)
+	GraphPoints.add_point(id, newRoom.center)
 	if (nearPoint != -1):
 		GraphPoints.connect_points(id, nearPoint)
 	
 	
-	for i in range(height):
-		for j in range(width):
+	
+	for i in range(width):
+		for j in range(height):
 			set_cell(0, Vector2(x + i, y + j), 0, Vector2(0, 0), 0)
+			
 	
 
 	
@@ -65,6 +71,36 @@ func room_intersect(room1: Room, room2: Room):
 
 	return intersected
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+func connect_rooms():
+	for point in GraphPoints.get_point_ids():
+		var currentPos = GraphPoints.get_point_position(point)
+		currentPos.x = currentPos.x / 16
+		currentPos.y = currentPos.y / 16
+		for connectedPoint in GraphPoints.get_point_connections(point):
+			var connectedPos = GraphPoints.get_point_position(connectedPoint)
+			connectedPos.x = currentPos.x / 16
+			connectedPos.y = currentPos.y / 16
+			var length = connectedPos - currentPos
+			
+			var incrementX
+			if (length.x > 0):
+				incrementX = 1
+			else:
+				incrementX = -1
+			var incrementY
+			if (length.y > 0):
+				incrementY = 1
+			else:
+				incrementY = -1
+			
+			for x in range(abs(length.x)):
+				currentPos.x += incrementX
+				set_cell(0, currentPos, 6, Vector2i(6, 13), 0)
+			for y in range(abs(length.y)):
+				currentPos.y += incrementY
+				set_cell(0, currentPos, 6, Vector2i(6, 13), 0)
+			
+			
 func _process(delta):
 	pass
 
