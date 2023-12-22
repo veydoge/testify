@@ -1,6 +1,6 @@
-extends Node2D
+extends CanvasLayer
 
-var player_current_attack = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -11,3 +11,6 @@ func _process(delta):
 	pass
 
 
+func _on_closebtn_pressed():
+	get_node("Anim").play("TransOut")
+	get_tree().paused = false
