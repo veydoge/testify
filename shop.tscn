@@ -1,6 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://bp82bt55e1vtw"]
+[gd_scene load_steps=14 format=3 uid="uid://bp82bt55e1vtw"]
 
 [ext_resource type="Script" path="res://shop.gd" id="1_lqwkj"]
+[ext_resource type="Texture2D" uid="uid://cuddmvp8wng3n" path="res://flaskBlue.png" id="2_o4nyb"]
+[ext_resource type="Texture2D" uid="uid://d1y3uvg2hebv4" path="res://flaskGreen.png" id="3_fus7h"]
+[ext_resource type="Texture2D" uid="uid://bx2i00ekk6coh" path="res://flaskPurple.png" id="4_wtmng"]
+[ext_resource type="Texture2D" uid="uid://dx2xg3nb5usbo" path="res://flaskRed.png" id="5_s3hye"]
+[ext_resource type="Texture2D" uid="uid://0sms8sewhbto" path="res://flaskYellow.png" id="6_7cgfi"]
+
+[sub_resource type="Animation" id="Animation_l3t6s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -400)]
+}
 
 [sub_resource type="Animation" id="Animation_25ant"]
 resource_name = "TransIn"
@@ -32,27 +52,61 @@ tracks/0/keys = {
 "values": [Vector2(0, 100), Vector2(0, 800)]
 }
 
-[sub_resource type="Animation" id="Animation_l3t6s"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("..:offset")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -400)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bym5a"]
 _data = {
 "RESET": SubResource("Animation_l3t6s"),
 "TransIn": SubResource("Animation_25ant"),
 "TransOut": SubResource("Animation_ebdd0")
 }
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dd6l8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_o4nyb")
+}],
+"loop": true,
+"name": &"flask blue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_fus7h")
+}],
+"loop": true,
+"name": &"flask green",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_wtmng")
+}],
+"loop": true,
+"name": &"flask purple",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_s3hye")
+}],
+"loop": true,
+"name": &"flask red",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_7cgfi")
+}],
+"loop": true,
+"name": &"flask yellow",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_u5ddx"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_7vcon"]
+font_size = 22
 
 [node name="shop" type="CanvasLayer"]
 process_mode = 3
@@ -93,26 +147,29 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Sprite2D" type="Sprite2D" parent="Control"]
+[node name="AnimSprite" type="AnimatedSprite2D" parent="Control"]
+position = Vector2(576, 136)
+sprite_frames = SubResource("SpriteFrames_dd6l8")
+animation = &"flask blue"
 
 [node name="Name" type="Label" parent="Control"]
 layout_mode = 0
-offset_left = 520.0
-offset_top = 68.0
-offset_right = 632.0
-offset_bottom = 116.0
-text = "Name"
+offset_left = 504.0
+offset_top = 32.0
+offset_right = 648.0
+offset_bottom = 80.0
+label_settings = SubResource("LabelSettings_u5ddx")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Des" type="Label" parent="Control"]
 layout_mode = 0
-offset_left = 384.0
-offset_top = 268.0
+offset_left = 376.0
+offset_top = 200.0
 offset_right = 776.0
-offset_bottom = 323.0
-text = "sgdsagerg"
+offset_bottom = 255.0
+label_settings = SubResource("LabelSettings_7vcon")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -120,25 +177,28 @@ autowrap_mode = 3
 [node name="Next" type="Button" parent="Control"]
 layout_mode = 0
 offset_left = 704.0
-offset_top = 156.0
-offset_right = 722.0
-offset_bottom = 187.0
+offset_top = 104.0
+offset_right = 736.0
+offset_bottom = 148.0
 text = ">"
 
 [node name="Prev" type="Button" parent="Control"]
 layout_mode = 0
-offset_left = 432.0
-offset_top = 156.0
-offset_right = 450.0
-offset_bottom = 187.0
+offset_left = 416.0
+offset_top = 104.0
+offset_right = 448.0
+offset_bottom = 148.0
 text = "<"
 
 [node name="Buy" type="Button" parent="Control"]
 layout_mode = 0
 offset_left = 528.0
-offset_top = 348.0
+offset_top = 304.0
 offset_right = 632.0
-offset_bottom = 379.0
+offset_bottom = 335.0
 text = "Buy"
 
 [connection signal="pressed" from="Closebtn" to="." method="_on_closebtn_pressed"]
+[connection signal="pressed" from="Control/Next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="Control/Prev" to="." method="_on_prev_pressed"]
+[connection signal="pressed" from="Control/Buy" to="." method="_on_buy_pressed"]
