@@ -59,24 +59,31 @@ func make_an_island(x, y):
 	
 
 	
+#func room_intersect(room1: Room, room2: Room): # один из вариантов не учитывал
+#	var intersected = false
+#	for corner in room1.corners: 
+#		# проверяет является ли первый остров, вложенным во второй
+#		if (corner.x >= room2.position.x and corner.x <= room2.position.x + room2.width) and (corner.y >= room2.position.y and corner.y <= room2.position.y + room2.height):
+#			intersected = true
+#			return intersected
+#	for corner in room2.corners:
+#		# проверяет является ли второй остров, вложенным в первый
+#		if (corner.x >= room1.position.x and corner.x <= room1.position.x + room1.width) and (corner.y >= room1.position.y and corner.y <= room1.position.y + room1.height):
+#			intersected = true
+#			return intersected
+
 func room_intersect(room1: Room, room2: Room):
-	var intersected = false
-	for corner in room1.corners:
-		# проверяет является ли первый остров, вложенным во второй
-		if (corner.x >= room2.position.x and corner.x <= room2.position.x + room2.width) and (corner.y >= room2.position.y and corner.y <= room2.position.y + room2.height):
-			intersected = true
-			return intersected
-	for corner in room2.corners:
-		# проверяет является ли второй остров, вложенным в первый
-		if (corner.x >= room1.position.x and corner.x <= room1.position.x + room1.width) and (corner.y >= room1.position.y and corner.y <= room1.position.y + room1.height):
-			intersected = true
-			return intersected
+	if (room2.position.x + room2.width >= room1.position.x and room2.position.x <= room1.position.x + room1.width and room2.position.y + room2.height >= room1.position.y and room2.position.y <= room1.position.y + room1.height):
+			return true
+	return false
+	
+signal confirmationCheck
 
 
-	return intersected
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func connect_rooms():
 	for point in GraphPoints.get_point_ids():
+		await confirmationCheck
 		var currentPos = GraphPoints.get_point_position(point)
 		currentPos.x = currentPos.x / 16
 		currentPos.y = currentPos.y / 16
@@ -105,21 +112,22 @@ func connect_rooms():
 			else:
 				incrementY = -1
 
-			
+			set_cell(0, currentPos, 6, Vector2i(6, 13), 0)
 			for x in range(abs(length.x)):
 				currentPos.x += incrementX
-
 				set_cell(0, currentPos, 6, Vector2i(6, 13), 0)
 			for y in range(abs(length.y)):
 				currentPos.y += incrementY
 
 				set_cell(0, currentPos, 6, Vector2i(6, 13), 0)
 			GraphPoints.disconnect_points(point, connectedPoint)
-			
+		await get_tree().create_timer(1).timeout
 			
 
 			
 func _process(delta):
+	if Input.is_key_pressed(KEY_ENTER):
+		confirmationCheck.emit()
 	pass
 
 
