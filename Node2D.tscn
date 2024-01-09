@@ -24,7 +24,7 @@ layer_1/modulate = Color(1, 1, 1, 1)
 layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 1
-layer_1/tile_data = PackedInt32Array(2097194, 9, 0, 2097198, 9, 0, 1703977, 1, 65536, 1703983, 1, 65536, 1835052, 1, 65536, 1638436, 1, 65536, 1966116, 1, 65536, 2293813, 2, 65536, 1245236, 2, 65536, 1245215, 2, 65536, 2359325, 2, 65536)
+layer_1/tile_data = PackedInt32Array(2097194, 9, 0, 2097198, 9, 0, 1703977, 1, 65536, 1703983, 1, 65536, 1835052, 1, 65536, 1638436, 1, 65536, 1966116, 1, 65536, 2293813, 2, 65536, 1245236, 2, 65536, 1245215, 2, 65536, 2359325, 2, 65536, 1245221, 2, 131072, 1245229, 2, 131072, 2424868, 2, 131072, 2424876, 2, 131072)
 metadata/_edit_group_ = true
 
 [node name="Player" parent="." instance=ExtResource("3_wu8vn")]
@@ -93,23 +93,31 @@ layout_mode = 2
 [node name="ItemSlot15" parent="CanvasLayer/InventoryGUI/GridContainer" instance=ExtResource("5_o4eug")]
 layout_mode = 2
 
-[connection signal="body_entered" from="TileMap/@Area2D@34174" to="TileMap/@Area2D@34174" method="_on_body_entered" flags=18]
-[connection signal="body_exited" from="TileMap/@Area2D@34174" to="TileMap/@Area2D@34174" method="_on_body_exited" flags=18]
-[connection signal="body_entered" from="TileMap/@Area2D@34175" to="TileMap/@Area2D@34175" method="_on_body_entered" flags=18]
-[connection signal="body_exited" from="TileMap/@Area2D@34175" to="TileMap/@Area2D@34175" method="_on_body_exited" flags=18]
-[connection signal="body_entered" from="TileMap/@Area2D@34176" to="TileMap/@Area2D@34176" method="_on_body_entered" flags=18]
-[connection signal="body_exited" from="TileMap/@Area2D@34176" to="TileMap/@Area2D@34176" method="_on_body_exited" flags=18]
-[connection signal="body_entered" from="TileMap/@Area2D@34177" to="TileMap/@Area2D@34177" method="_on_body_entered" flags=18]
-[connection signal="body_exited" from="TileMap/@Area2D@34177" to="TileMap/@Area2D@34177" method="_on_body_exited" flags=18]
-[connection signal="body_entered" from="TileMap/@Area2D@34178" to="TileMap/@Area2D@34178" method="_on_body_entered" flags=18]
-[connection signal="body_exited" from="TileMap/@Area2D@34178" to="TileMap/@Area2D@34178" method="_on_body_exited" flags=18]
-[connection signal="body_entered" from="TileMap/@Area2D@34179" to="TileMap/@Area2D@34179" method="_on_body_entered" flags=18]
-[connection signal="body_exited" from="TileMap/@Area2D@34179" to="TileMap/@Area2D@34179" method="_on_body_exited" flags=18]
-[connection signal="body_entered" from="TileMap/@Area2D@34180" to="TileMap/@Area2D@34180" method="_on_body_entered" flags=18]
-[connection signal="body_exited" from="TileMap/@Area2D@34180" to="TileMap/@Area2D@34180" method="_on_body_exited" flags=18]
-[connection signal="body_entered" from="TileMap/@Area2D@34181" to="TileMap/@Area2D@34181" method="_on_body_entered" flags=18]
-[connection signal="body_exited" from="TileMap/@Area2D@34181" to="TileMap/@Area2D@34181" method="_on_body_exited" flags=18]
-[connection signal="body_entered" from="TileMap/@Area2D@34182" to="TileMap/@Area2D@34182" method="_on_body_entered" flags=18]
-[connection signal="body_exited" from="TileMap/@Area2D@34182" to="TileMap/@Area2D@34182" method="_on_body_exited" flags=18]
+[connection signal="body_entered" from="TileMap/@Area2D@23287" to="TileMap/@Area2D@23287" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="TileMap/@Area2D@23287" to="TileMap/@Area2D@23287" method="_on_body_exited" flags=18]
+[connection signal="body_entered" from="TileMap/@Area2D@23288" to="TileMap/@Area2D@23288" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="TileMap/@Area2D@23288" to="TileMap/@Area2D@23288" method="_on_body_exited" flags=18]
+[connection signal="body_entered" from="TileMap/@Area2D@23289" to="TileMap/@Area2D@23289" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="TileMap/@Area2D@23289" to="TileMap/@Area2D@23289" method="_on_body_exited" flags=18]
+[connection signal="body_entered" from="TileMap/@Area2D@23290" to="TileMap/@Area2D@23290" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="TileMap/@Area2D@23290" to="TileMap/@Area2D@23290" method="_on_body_exited" flags=18]
+[connection signal="body_entered" from="TileMap/@Area2D@23291" to="TileMap/@Area2D@23291" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="TileMap/@Area2D@23291" to="TileMap/@Area2D@23291" method="_on_body_exited" flags=18]
+[connection signal="body_entered" from="TileMap/@Area2D@23292" to="TileMap/@Area2D@23292" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="TileMap/@Area2D@23292" to="TileMap/@Area2D@23292" method="_on_body_exited" flags=18]
+[connection signal="body_entered" from="TileMap/@Area2D@23293" to="TileMap/@Area2D@23293" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="TileMap/@Area2D@23293" to="TileMap/@Area2D@23293" method="_on_body_exited" flags=18]
+[connection signal="body_entered" from="TileMap/@Area2D@23294" to="TileMap/@Area2D@23294" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="TileMap/@Area2D@23294" to="TileMap/@Area2D@23294" method="_on_body_exited" flags=18]
+[connection signal="body_entered" from="TileMap/@Area2D@23295" to="TileMap/@Area2D@23295" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="TileMap/@Area2D@23295" to="TileMap/@Area2D@23295" method="_on_body_exited" flags=18]
+[connection signal="body_entered" from="TileMap/@Area2D@23296" to="TileMap/@Area2D@23296" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="TileMap/@Area2D@23296" to="TileMap/@Area2D@23296" method="_on_body_exited" flags=18]
+[connection signal="body_entered" from="TileMap/@Area2D@23297" to="TileMap/@Area2D@23297" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="TileMap/@Area2D@23297" to="TileMap/@Area2D@23297" method="_on_body_exited" flags=18]
+[connection signal="body_entered" from="TileMap/@Area2D@23298" to="TileMap/@Area2D@23298" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="TileMap/@Area2D@23298" to="TileMap/@Area2D@23298" method="_on_body_exited" flags=18]
+[connection signal="body_entered" from="TileMap/@Area2D@23299" to="TileMap/@Area2D@23299" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="TileMap/@Area2D@23299" to="TileMap/@Area2D@23299" method="_on_body_exited" flags=18]
 [connection signal="closed" from="CanvasLayer/InventoryGUI" to="." method="_on_inventory_gui_closed"]
 [connection signal="opened" from="CanvasLayer/InventoryGUI" to="." method="_on_inventory_gui_opened"]
