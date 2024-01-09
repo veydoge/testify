@@ -1,9 +1,10 @@
-[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://chch7qij7mj4j"]
+[gd_resource type="TileSet" load_steps=11 format=3 uid="uid://chch7qij7mj4j"]
 
 [ext_resource type="Texture2D" uid="uid://dhhy351r5326e" path="res://stones.png" id="1_2oecf"]
 [ext_resource type="PackedScene" uid="uid://diui1glh7duqx" path="res://tomato.tscn" id="1_hj21b"]
 [ext_resource type="Texture2D" uid="uid://c0dyfo2pcw20h" path="res://Tiny Wonder Forest 1.0/tilemaps/summer tilemap.png" id="1_xb5kq"]
 [ext_resource type="Texture2D" uid="uid://bau2wq7kkknxk" path="res://ezgif-2-2fb7504e2b.png" id="2_35sjy"]
+[ext_resource type="PackedScene" uid="uid://mata51t650ff" path="res://tree.tscn" id="3_ttjdw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ick2t"]
 texture = ExtResource("1_2oecf")
@@ -23,6 +24,10 @@ texture = ExtResource("1_2oecf")
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_etxes"]
 resource_name = "Collectables"
 scenes/1/scene = ExtResource("1_hj21b")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_kjlt1"]
+resource_name = "Destroyables"
+scenes/1/scene = ExtResource("3_ttjdw")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8cqy2"]
 texture = ExtResource("1_xb5kq")
@@ -432,3 +437,4 @@ sources/6 = SubResource("TileSetAtlasSource_8cqy2")
 sources/9 = SubResource("TileSetAtlasSource_20ux0")
 sources/1 = SubResource("TileSetScenesCollectionSource_etxes")
 sources/0 = SubResource("TileSetAtlasSource_ick2t")
+sources/2 = SubResource("TileSetScenesCollectionSource_kjlt1")
