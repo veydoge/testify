@@ -1,31 +1,30 @@
 extends Node
 
-var gold = 10000
 var items = {
 	
 	0:{
-		"Name":"flask blue",
-		"Des":"sdfgr",
+		"Name":"Голубое зелье",
+		"Des":"Для ..",
 		"Cost": 10
 	},
 	1:{
-		"Name":"flask green",
-		"Des":"rehe",
+		"Name":"Зеленое зелье",
+		"Des":"Для ..",
 		"Cost": 100
 	},
 	2:{
-		"Name":"flask red",
-		"Des":"jnk",
+		"Name":"Красное зелье",
+		"Des":"Для ..",
 		"Cost": 1000
 	},
 	3:{
-		"Name":"flask yellow",
-		"Des":"trjtrjy",
+		"Name":"Желтое зелье",
+		"Des":"Для ..",
 		"Cost": 1
 	},
 	4:{
-		"Name":"flask purple",
-		"Des":"rtjnyt",
+		"Name":"Фиолетовое зелье",
+		"Des":"Для ..",
 		"Cost": 10
 	},
 }

@@ -5,6 +5,7 @@ var select = 0
 
 func _on_closebtn_pressed():
 	get_node("Anim").play("TransOut")
+	SaveCoins.save_coin()
 	get_tree().paused = false
 
 func switchItem(select):
@@ -23,4 +24,9 @@ func _on_prev_pressed():
 	switchItem(currentItem - 1)
 
 func _on_buy_pressed():
-	pass # Replace with function body.
+	if SaveCoins.coin > Global.items[currentItem]["Cost"]:
+		SaveCoins.coin -= Global.items[currentItem]["Cost"]
+	else:
+		get_node("Error").text = "Недостаточно монет"
+		
+	

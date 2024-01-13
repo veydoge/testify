@@ -8,7 +8,7 @@ public partial class Camera2D : Godot.Camera2D
 	public override void _Ready()
 	{
 		
-		characterBody2D = GetParent<Node2D>().GetNode<CharacterBody2D>("CharacterBody2D");
+		characterBody2D = GetParent<Node2D>().GetNode<CharacterBody2D>("player");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -1,39 +1,41 @@
 extends CharacterBody2D
+
 const speed = 300
-
-
 var enemy_inattack_range = false
 var enemy_attak_cooldown = true
-var health = 100
 var player_alive = true
 var attack_ip = false
 var current_dir = "none"
 var canpick = true
-
+var spawn_position : Vector2
+var health = 100
+var Direction
 @onready var animatedSprite : AnimatedSprite2D = $AnimatedSprite2D
 
-
-		
 func _physics_process(_delta):
+	World.pos = position
 	if (velocity.x == 0):
 		animatedSprite.play("idle")
-	
-	var Direction = Input.get_vector("leftmove", "rightmove", "upmove", "downmove")
+	Direction = Input.get_vector("leftmove", "rightmove", "upmove", "downmove")
 	if (Direction != Vector2.ZERO):
 		velocity.x = Direction.x * speed	
 		velocity.y = Direction.y * speed
 		if (velocity.x < 0):
+			current_dir = "going"
 			animatedSprite.play("going")
 			$sword.rotation_degrees = 180
 			animatedSprite.flip_h = true
 		if (velocity.x > 0):
+			current_dir = "going"
 			animatedSprite.play("going")
 			$sword.rotation_degrees = 0
 			animatedSprite.flip_h = false
 		if (velocity.y < 0):
+			current_dir = "up"
 			animatedSprite.play("up")
 			animatedSprite.flip_h = false
 		if (velocity.y > 0):
+			current_dir = "down"
 			animatedSprite.play("down")
 			animatedSprite.flip_h = false
 	else:
@@ -46,10 +48,11 @@ func _physics_process(_delta):
 	
 	if health == 0:
 		player_alive = false 
-		health = 0
+		World.player_health = 0
 		print("player has been killed")
-		self.queue_free()
-
+		get_tree().change_scene_to_file("res://panel.tscn")
+	
+		
 func player():
 	pass
 
@@ -97,12 +100,7 @@ func attack():
 	if Input.is_action_just_pressed("attack"):
 		World.player_current_attack = true
 		attack_ip = true
-		$sword/AnimationPlayer.play("sword")
-		if air == "right":
-			$AnimatedSprite2D.flip_h = false
-			$deal_attack_timer.start()
-		if air == "left":
-			$AnimatedSprite2D.flip_h = true
+		if air == "going":
 			$deal_attack_timer.start()
 		if air == "down":
 			$deal_attack_timer.start()

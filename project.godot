@@ -19,6 +19,7 @@ config/icon="res://icon.png"
 
 World="*res://Node2D.gd"
 Global="*res://Global.gd"
+SaveCoins="*res://SaveCoins.gd"
 
 [dotnet]
 
