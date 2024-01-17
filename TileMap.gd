@@ -24,7 +24,7 @@ func _ready():
 	for i in range(projectTilesRes.x):
 		for j in range(projectTilesRes.y):
 			set_cell(0, Vector2(i, j), 6, Vector2(6, 8), 0)                                                                                                                                                                                                                                                                                                                                                                                                             
-
+	
 	
 	for i in range(8):
 		make_an_island(randi_range(0, projectTilesRes.x - 14), randi_range(0, projectTilesRes.y - 14))
@@ -112,23 +112,31 @@ func connect_rooms():
 	for point in GraphPoints.get_point_ids():
 		await confirmationCheck
 		var currentPos = GraphPoints.get_point_position(point)
+<<<<<<< HEAD
 		currentPos.x = int(currentPos.x / 16)
 		currentPos.y = int(currentPos.y / 16)
+=======
+		currentPos.x = currentPos.x / 16
+		currentPos.y = currentPos.y / 16 # ошибка с несколькими коннектнутыми точками
+>>>>>>> ecb743ef39d83da1aaae2b882613d4216a963131
 		for connectedPoint in GraphPoints.get_point_connections(point):
 			var connectedPos = GraphPoints.get_point_position(connectedPoint)
 			connectedPos.x = int(connectedPos.x / 16)
 			connectedPos.y = int(connectedPos.y / 16)
 			var length = connectedPos - currentPos
+			print(length)
 			
 			var currentRoom : Room = find_room_by_id(point)
 			var connectedRoom : Room = find_room_by_id(connectedPoint)
 			
 			
 			
+			
+			
 			var incrementX
 			if (length.x > 0):
 				incrementX = 1
-				
+
 			else:
 				incrementX = -1
 
@@ -140,13 +148,15 @@ func connect_rooms():
 				incrementY = -1
 
 			set_cell(0, currentPos, 6, Vector2i(6, 13), 0)
-			for x in range(abs(length.x)):
-				currentPos.x += incrementX
-				set_cell(0, currentPos, 6, Vector2i(6, 13), 0)
-			for y in range(abs(length.y)):
-				currentPos.y += incrementY
-
-				set_cell(0, currentPos, 6, Vector2i(6, 13), 0)
+			var drawingPos = currentPos
+			for x in range(ceil(abs(length.x))):
+				drawingPos.x += incrementX
+				set_cell(0, drawingPos, 6, Vector2i(6, 13), 0)
+				
+			for y in range(ceil(abs(length.y))):
+				drawingPos.y += incrementY
+				set_cell(0, drawingPos, 6, Vector2i(6, 13), 0)
+				
 			GraphPoints.disconnect_points(point, connectedPoint)
 		await get_tree().create_timer(1).timeout
 			
