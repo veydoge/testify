@@ -84,8 +84,6 @@ shape = SubResource("RectangleShape2D_anpjv")
 
 [node name="shop" parent="Area2D" instance=ExtResource("7_jxqxq")]
 
-[node name="shop2" parent="Area2D" instance=ExtResource("7_jxqxq")]
-
 [node name="player" parent="." instance=ExtResource("4_rkwjr")]
 position = Vector2(606, 478)
 

@@ -26,7 +26,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2pa7u"]
-radius = 37.0
+radius = 44.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8ethk"]
 radius = 5.0
@@ -38,6 +38,10 @@ radius = 11.0
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_h8ui6")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 37)
+collide_with_areas = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = -1

@@ -78,31 +78,7 @@ animations = [{
 "texture": ExtResource("2_o4nyb")
 }],
 "loop": true,
-"name": &"flask blue",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_fus7h")
-}],
-"loop": true,
-"name": &"flask green",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_wtmng")
-}],
-"loop": true,
-"name": &"flask purple",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_s3hye")
-}],
-"loop": true,
-"name": &"flask red",
+"name": &"Голубое зелье",
 "speed": 5.0
 }, {
 "frames": [{
@@ -110,7 +86,31 @@ animations = [{
 "texture": ExtResource("6_7cgfi")
 }],
 "loop": true,
-"name": &"flask yellow",
+"name": &"Желтое зелье",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_fus7h")
+}],
+"loop": true,
+"name": &"Зеленое зелье",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_s3hye")
+}],
+"loop": true,
+"name": &"Красное зелье",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_wtmng")
+}],
+"loop": true,
+"name": &"Фиолетовое зелье",
 "speed": 5.0
 }]
 
@@ -186,7 +186,7 @@ offset_bottom = 40.0
 position = Vector2(577, 158)
 scale = Vector2(1, 1.03125)
 sprite_frames = SubResource("SpriteFrames_dd6l8")
-animation = &"flask blue"
+animation = &"Фиолетовое зелье"
 
 [node name="Name" type="Label" parent="Control"]
 layout_mode = 0
