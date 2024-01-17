@@ -3,9 +3,11 @@ extends CharacterBody2D
 
 var speed = 60.0
 @onready var animations = $AnimatedSprite2D
+@onready var nav = $NavigationAgent2D as NavigationAgent2D
+@export var pl : Node2D
 var dead = false
 var player_in_area = false
-var player
+var player 
 var health = 100
 var player_inattack_zone = false
 var can_take_damage = true
@@ -19,11 +21,12 @@ func _physics_process(delta):
 	if !dead:
 		$detection_area/CollisionShape2D.disabled = false
 		if player_in_area:
-			var dir = player.position - position
-			$RayCast2D.target_position = dir
-			$RayCast2D.force_raycast_update()
-			var collision = move_and_collide($RayCast2D.target_position.normalized() * speed * delta)
+			var ag = nav
+			var next = ag.get_next_path_position()
+			ag.target_position = player.position - position
+			velocity = position.direction_to(next) * speed
 			animations.play("jump")
+			move_and_slide()
 		else:
 			animations.play("jump")
 	if dead:
