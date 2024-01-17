@@ -12,12 +12,8 @@ func _draw():
 				var positionConnectedPoint = GraphPoints.get_point_position(connectedPointId)
 				draw_line(positionPoint, positionConnectedPoint, Color.RED, 2)
 	$"../TileMap".connect_rooms()
-	
-	
-
+	$"../TileMap".connect_rooms2()
 	
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass

@@ -9,6 +9,7 @@ var RoomGraph = []
 # Called when the node enters the scene tree for the first time.
 
 func _ready():
+	
 
 	get_screen_transform()
 	projectResolution= get_viewport().get_visible_rect().size
@@ -80,17 +81,43 @@ func room_intersect(room1: Room, room2: Room):
 signal confirmationCheck
 
 
+func connect_rooms2():
+	var connections : Array = []
+	for pointId in GraphPoints.get_point_ids():
+		
+		var pointPosition = GraphPoints.get_point_position(pointId)
+		GraphPoints.remove_point(pointId)
+		var connectId = GraphPoints.get_closest_point(pointPosition)
+		if (connectId == -1):
+			continue
+		var pointConPosition = GraphPoints.get_point_position(connectId)
+		var connection : Array = []
+		connection.append(pointPosition)
+		connection.append(pointConPosition)
+		if (!check_connection_existed(connections, connection)):
+			connections.append(connection)
+	print("its over")
+		
+func check_connection_existed(connections, connectionCheck):
+	for connection in connections:
+		if ((connection[0] == connectionCheck[0] and connection[1] == connectionCheck[1]) or (connection[0] == connectionCheck[1]) and connection[1] == connectionCheck[0]):
+			return true
+	return false
+	
+		
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func connect_rooms():
 	for point in GraphPoints.get_point_ids():
 		await confirmationCheck
 		var currentPos = GraphPoints.get_point_position(point)
-		currentPos.x = currentPos.x / 16
-		currentPos.y = currentPos.y / 16
+		currentPos.x = int(currentPos.x / 16)
+		currentPos.y = int(currentPos.y / 16)
 		for connectedPoint in GraphPoints.get_point_connections(point):
 			var connectedPos = GraphPoints.get_point_position(connectedPoint)
-			connectedPos.x = connectedPos.x / 16
-			connectedPos.y = connectedPos.y / 16
+			connectedPos.x = int(connectedPos.x / 16)
+			connectedPos.y = int(connectedPos.y / 16)
 			var length = connectedPos - currentPos
 			
 			var currentRoom : Room = find_room_by_id(point)
