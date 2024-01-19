@@ -1,5 +1,4 @@
-extends Node2D
-
+extends AnimatedSprite2D
 
 
 # Called when the node enters the scene tree for the first time.
@@ -10,13 +9,3 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-
-
-func _on_inventory_gui_closed():
-	get_tree().paused = false
-
-
-func _on_inventory_gui_opened():
-	get_tree().paused = true
-
-
