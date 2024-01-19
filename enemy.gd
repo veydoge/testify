@@ -21,17 +21,18 @@ func _physics_process(delta):
 	if !dead:
 		$detection_area/CollisionShape2D.disabled = false
 		if player_in_area:
-			var ag = nav
-			var next = ag.get_next_path_position()
-			ag.target_position = player.position - position
-			velocity = position.direction_to(next) * speed
+			var dir = to_local(nav.get_next_path_position()).normalized()
+			velocity = dir * speed
 			animations.play("jump")
 			move_and_slide()
 		else:
 			animations.play("jump")
 	if dead:
 		$detection_area/CollisionShape2D.disabled = true
+	
 
+func _on_timer_timeout():
+	nav.target_position = pl.global_position
 
 func _on_detection_area_body_entered(body):
 	if body.has_method("player"):

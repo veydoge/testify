@@ -61,8 +61,9 @@ layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array(2097194, 9, 0, 2097198, 9, 0)
 
-[node name="enemy" parent="." instance=ExtResource("5_2pm0o")]
+[node name="enemy" parent="." node_paths=PackedStringArray("pl") instance=ExtResource("5_2pm0o")]
 position = Vector2(736, 459)
+pl = NodePath("../player")
 
 [node name="Area2D" type="Area2D" parent="."]
 light_mask = 2
