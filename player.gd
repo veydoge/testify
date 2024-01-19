@@ -10,6 +10,7 @@ var canpick = true
 var spawn_position : Vector2
 var health = 100
 var Direction
+@onready var inventory = preload("res://assets/inventory/inventory.tres")
 @onready var animatedSprite : AnimatedSprite2D = $AnimatedSprite2D
 
 func _physics_process(_delta):
@@ -17,6 +18,12 @@ func _physics_process(_delta):
 	if (velocity.x == 0):
 		animatedSprite.play("idle")
 	Direction = Input.get_vector("leftmove", "rightmove", "upmove", "downmove")
+
+func _physics_process(delta):
+	if (velocity.x == 0):
+		animatedSprite.play("idle")
+	
+	var Direction = Input.get_vector("leftmove", "rightmove", "upmove", "downmove")
 	if (Direction != Vector2.ZERO):
 		velocity.x = Direction.x * speed	
 		velocity.y = Direction.y * speed
@@ -65,7 +72,6 @@ func update_health():
 	else:
 		healthbar.visible = true
 		
-		
 func _on_timer_timeout():
 	if health < 100:
 		health = health + 20
@@ -74,11 +80,9 @@ func _on_timer_timeout():
 	if health <= 0:
 		health = 0
 
-
 func _on_player_hitbox_body_entered(body):
 	if body.has_method("enemy"):
 		enemy_inattack_range = true
-
 
 func _on_player_hitbox_body_exited(body):
 	if body.has_method("enemy"):
@@ -90,7 +94,6 @@ func enemy_attack():
 		enemy_attak_cooldown = false
 		$attack_cooldown.start()
 		print(health)
-
 
 func _on_attack_cooldown_timeout():
 	enemy_attak_cooldown = true
@@ -111,3 +114,7 @@ func _on_deal_attack_timer_timeout():
 	$deal_attack_timer.stop()
 	World.player_current_attack = false
 	attack_ip = false
+	
+func _on_area_2d_area_entered(area: Area2D):
+	if (area.has_method("collect")):
+		area.collect(inventory)

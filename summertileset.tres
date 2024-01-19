@@ -1,5 +1,7 @@
-[gd_resource type="TileSet" load_steps=8 format=3 uid="uid://chch7qij7mj4j"]
+[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://chch7qij7mj4j"]
 
+[ext_resource type="Texture2D" uid="uid://dhhy351r5326e" path="res://stones.png" id="1_2oecf"]
+[ext_resource type="PackedScene" uid="uid://diui1glh7duqx" path="res://tomato.tscn" id="1_hj21b"]
 [ext_resource type="Texture2D" uid="uid://c0dyfo2pcw20h" path="res://Tiny Wonder Forest 1.0/tilemaps/summer tilemap.png" id="1_xb5kq"]
 [ext_resource type="Texture2D" uid="uid://bau2wq7kkknxk" path="res://ezgif-2-2fb7504e2b.png" id="2_35sjy"]
 
@@ -17,6 +19,25 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -6
 vertices = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ick2t"]
+texture = ExtResource("1_2oecf")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_etxes"]
+resource_name = "Collectables"
+scenes/1/scene = ExtResource("1_hj21b")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8cqy2"]
 texture = ExtResource("1_xb5kq")
@@ -433,7 +454,7 @@ texture = ExtResource("2_35sjy")
 0:0/0/physics_layer_0/angular_velocity = 0.0
 
 [resource]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 15
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.886275, 0, 0, 1)
@@ -441,3 +462,5 @@ terrain_set_1/mode = 0
 navigation_layer_0/layers = 1
 sources/6 = SubResource("TileSetAtlasSource_8cqy2")
 sources/9 = SubResource("TileSetAtlasSource_20ux0")
+sources/1 = SubResource("TileSetScenesCollectionSource_etxes")
+sources/0 = SubResource("TileSetAtlasSource_ick2t")
